@@ -6,6 +6,12 @@ public class Take_Item : MonoBehaviour {
     public GameObject Player;
     public int PickDistance = 5;
 
+	public enum Itemtype
+	{
+		Key,Shotgun
+	}
+
+	public Itemtype Item;
 	// Use this for initialization
 	void Start () {
 	
@@ -22,6 +28,13 @@ public class Take_Item : MonoBehaviour {
         if (Vector3.Distance(this.transform.position, Player.transform.position) < PickDistance)
         {
             Destroy(this.gameObject);
+
+			if (Item == Itemtype.Shotgun) {
+			//TODO Shotgun in inventory
+			} else {
+				//TODO Key in inventory
+			}
+
         }
 
         //save object as taken
