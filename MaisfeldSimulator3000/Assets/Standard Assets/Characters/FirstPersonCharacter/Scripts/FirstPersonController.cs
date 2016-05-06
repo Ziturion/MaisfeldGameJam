@@ -13,6 +13,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
+        [SerializeField] private float m_RunDuration;
+        [SerializeField] private float m_RunDecreaseMultiplikator;
+        [SerializeField] private float m_RunIncreaseMutliplikator;
+        [SerializeField] private float m_DurationAfterExhaustionRunsOut;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -39,6 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
+        private float m_MaximumRunDuration;
+        private bool m_Exhausted;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
@@ -55,6 +61,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            m_MaximumRunDuration = m_RunDuration;
         }
 
 
@@ -107,6 +114,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
+
+            if(speed == m_RunSpeed)
+            {
+                m_RunDuration -= Time.deltaTime * m_RunDecreaseMultiplikator;
+            }
+            else if(m_RunDuration <= m_MaximumRunDuration)
+            {
+                m_RunDuration += Time.deltaTime * m_RunIncreaseMutliplikator;
+            }
+            if (m_RunDuration <= 0)
+                m_Exhausted = true;
+            else if(m_RunDuration >= m_DurationAfterExhaustionRunsOut)
+                m_Exhausted = false;
 
 
             if (m_CharacterController.isGrounded)
@@ -215,7 +235,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            if (!m_Exhausted)
+                speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            else
+                speed = m_WalkSpeed;
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
