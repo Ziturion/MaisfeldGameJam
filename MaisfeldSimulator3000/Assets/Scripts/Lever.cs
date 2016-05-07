@@ -25,11 +25,11 @@ public class Lever : MonoBehaviour
             if (Triggered)
             {
                 Triggered = false;
-                LeverObject.transform.position = new Vector3(0, 0, (float)-64.133);
+                LeverObject.transform.localPosition = new Vector3(0, 0, (float)-0.133);
             }
             else
             {
-                LeverObject.transform.position = new Vector3(0, 0, (float)-64.233);
+                LeverObject.transform.localPosition = new Vector3(0, 0, (float)0.133);
                 Triggered = true;
                 LeverScript.GetComponent<Leverscript>().PressedLever();
             }
