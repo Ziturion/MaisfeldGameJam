@@ -49,11 +49,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
         [SerializeField]
-        private bool hasKey;
+        private static bool hasKey;
         [SerializeField]
-        private bool hasShotgun;
+        private static bool hasShotgun;
         [SerializeField]
-        private bool hasHorse;
+        private static bool hasHorse;
 
         public bool GethasKey()
         {
