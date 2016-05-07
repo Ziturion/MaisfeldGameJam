@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Take_Item : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class Take_Item : MonoBehaviour {
 
 	public enum Itemtype
 	{
-		Key,Shotgun
+		Key,Shotgun,Lever
 	}
 
 	public Itemtype Item;
@@ -27,14 +28,14 @@ public class Take_Item : MonoBehaviour {
 
         if (Vector3.Distance(this.transform.position, Player.transform.position) < PickDistance)
         {
-            Destroy(this.gameObject);
+            
 
 			if (Item == Itemtype.Shotgun) {
-			//TODO Shotgun in inventory
+                Player.GetComponent<FirstPersonController>().SethasShotgun(true);
 			} else {
-				//TODO Key in inventory
-			}
-
+                Player.GetComponent<FirstPersonController>().SethasKey(true);
+            }
+            Destroy(this.gameObject);
         }
 
         //save object as taken

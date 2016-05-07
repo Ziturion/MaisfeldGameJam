@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Lvl_Change : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class Lvl_Change : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        Application.LoadLevel("Dungeon");
+        SceneManager.LoadScene("Dungeon");
     }
 
 }

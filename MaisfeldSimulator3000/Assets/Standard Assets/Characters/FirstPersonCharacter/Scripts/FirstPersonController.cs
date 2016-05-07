@@ -48,7 +48,38 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        // Use this for initialization
+        [SerializeField]
+        private bool hasKey;
+        [SerializeField]
+        private bool hasShotgun;
+        [SerializeField]
+        private bool hasHorse;
+
+        public bool GethasKey()
+        {
+            return hasKey;
+        }
+        public bool GethasShotgun()
+        {
+            return hasShotgun;
+        }
+        public bool GethasHorse()
+        {
+            return hasHorse;
+        }
+        public void SethasKey(bool state)
+        {
+            hasKey = state;
+        }
+        public void SethasShotgun(bool state)
+        {
+            hasShotgun = state;
+        }
+        public void SethasHorse(bool state)
+        {
+            hasHorse = state;
+        }
+
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
