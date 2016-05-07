@@ -10,6 +10,7 @@ public class EndTriggerScript : MonoBehaviour {
     public Canvas EndCanvas;
     public Text textfeld;
     public bool hasHorse, hasKey, hasShotgun;
+    public string Texttowrite;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,21 +21,30 @@ public class EndTriggerScript : MonoBehaviour {
         Destroy(Player.GetComponent<FirstPersonController>());
 
         if (hasHorse && hasKey && hasShotgun)
-            textfeld.text = "Beste Ende";
+            Texttowrite = "Beste Ende";
         else if (!hasHorse && !hasKey && !hasShotgun)
-            textfeld.text = "Biste absolut Tod";
+            Texttowrite = "Biste absolut Tod";
         else if (!hasHorse && hasKey && !hasShotgun)
-            textfeld.text = "Biste auch Tod";
+            Texttowrite = "Biste auch Tod";
         else if (hasHorse && hasKey && !hasShotgun)
-            textfeld.text = "Biste auch noch Tod";
+            Texttowrite = "Biste auch noch Tod";
         else if (!hasHorse && !hasKey && hasShotgun)
-            textfeld.text = "Überlebt aber schlechtes Ende";
+            Texttowrite = "Überlebt aber schlechtes Ende";
         else
         {
-            EndCanvas.GetComponent<Text>().text = "Überlebt aber schlechtes Ende";
+            Texttowrite = "Überlebt aber schlechtes Ende";
         }
         EndCanvas.gameObject.SetActive(true);
-        //SceneManager.LoadScene(0);
-        
+        StartCoroutine(Spell());
     }
+        //SceneManager.LoadScene(0);
+        IEnumerator Spell()
+            {
+            for (int i = 0; i < Texttowrite.Length; i++)
+            {
+            textfeld.text = textfeld.text + Texttowrite[i];
+                yield return new WaitForSeconds(0.05f);
+            }
+
+        }
 }
