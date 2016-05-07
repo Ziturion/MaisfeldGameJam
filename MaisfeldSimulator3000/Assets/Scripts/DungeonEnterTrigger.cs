@@ -7,8 +7,12 @@ public class DungeonEnterTrigger : MonoBehaviour {
 
     public GameObject Player;
     public bool hasHorse, hasKey, hasShotgun;
+    public int SceneIndex = 0;
 
+    void Start()
+    {
 
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,7 +20,7 @@ public class DungeonEnterTrigger : MonoBehaviour {
         hasHorse = Player.GetComponent<FirstPersonController>().GethasHorse();
         hasKey = Player.GetComponent<FirstPersonController>().GethasKey();
         hasShotgun = Player.GetComponent<FirstPersonController>().GethasShotgun();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneIndex);
 
     }
 }
