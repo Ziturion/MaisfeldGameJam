@@ -9,6 +9,10 @@ public class DungeonEnterTrigger : MonoBehaviour {
     public bool hasHorse, hasKey, hasShotgun;
     public int SceneIndex = 0;
 
+    void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
     void Start()
     {
 
