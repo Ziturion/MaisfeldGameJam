@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NightMazeScene.unity
+- path: Assets/DungeonScene.unity
   isLoaded: 1
   isActive: 1
