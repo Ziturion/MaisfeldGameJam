@@ -12,6 +12,14 @@ public class EndTriggerScript : MonoBehaviour {
     public bool hasHorse, hasKey, hasShotgun;
     public string Texttowrite;
 
+	public Image Background;
+
+	public Sprite BesteEnde;
+	public Sprite BisteAbsolutTod;
+	public Sprite BisteAuchTod;
+	public Sprite BisteAuchNochTod;
+	public Sprite UberlebtAberSchlechtesEnde;
+
     void OnTriggerEnter(Collider other)
     {
         hasHorse = Player.GetComponent<FirstPersonController>().GethasHorse();
@@ -20,19 +28,31 @@ public class EndTriggerScript : MonoBehaviour {
 
         Destroy(Player.GetComponent<FirstPersonController>());
 
-        if (hasHorse && hasKey && hasShotgun)
-            Texttowrite = "Beste Ende";
-        else if (!hasHorse && !hasKey && !hasShotgun)
-            Texttowrite = "Biste absolut Tod";
-        else if (!hasHorse && hasKey && !hasShotgun)
-            Texttowrite = "Biste auch Tod";
-        else if (hasHorse && hasKey && !hasShotgun)
-            Texttowrite = "Biste auch noch Tod";
-        else if (!hasHorse && !hasKey && hasShotgun)
-            Texttowrite = "Überlebt aber schlechtes Ende";
+		if (hasHorse && hasKey && hasShotgun) {
+			Texttowrite = "Beste Ende";
+			Background.sprite = BesteEnde;
+		}
+		else if (!hasHorse && !hasKey && !hasShotgun) {
+			Texttowrite = "Biste absolut Tod";
+			Background.sprite = BisteAbsolutTod;
+		}
+		else if (!hasHorse && hasKey && !hasShotgun) {
+			Texttowrite = "Biste auch Tod";
+			Background.sprite = BisteAuchTod;
+		}
+		else if (hasHorse && hasKey && !hasShotgun) {
+			Texttowrite = "Biste auch noch Tod";
+			Background.sprite = BisteAuchNochTod;
+		}
+		else if (!hasHorse && !hasKey && hasShotgun) {
+			Texttowrite = "Überlebt aber schlechtes Ende";
+			Background.sprite = UberlebtAberSchlechtesEnde;
+		}
+            
         else
         {
             Texttowrite = "Überlebt aber schlechtes Ende";
+			Background.sprite = UberlebtAberSchlechtesEnde;
         }
         EndCanvas.gameObject.SetActive(true);
         StartCoroutine(Spell());
