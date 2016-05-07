@@ -20,6 +20,11 @@ public class EndTriggerScript : MonoBehaviour {
 	public Sprite BisteAuchNochTod;
 	public Sprite UberlebtAberSchlechtesEnde;
 
+    void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void OnTriggerEnter(Collider other)
     {
         hasHorse = Player.GetComponent<FirstPersonController>().GethasHorse();
