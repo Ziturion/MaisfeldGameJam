@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Take_Item : MonoBehaviour {
 
@@ -30,10 +31,10 @@ public class Take_Item : MonoBehaviour {
             Destroy(this.gameObject);
 
 			if (Item == Itemtype.Shotgun) {
-			//TODO Shotgun in inventory
+                Player.GetComponent<FirstPersonController>().SethasShotgun(true);
 			} else {
-				//TODO Key in inventory
-			}
+                Player.GetComponent<FirstPersonController>().SethasKey(true);
+            }
 
         }
 
