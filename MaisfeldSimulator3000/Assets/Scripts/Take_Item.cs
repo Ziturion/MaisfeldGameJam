@@ -20,6 +20,7 @@ public class Take_Item : MonoBehaviour {
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+		Click = GameObject.FindGameObjectWithTag("Click").GetComponent<Image>();
     }
     void Start () {
 		Click.enabled=false;
