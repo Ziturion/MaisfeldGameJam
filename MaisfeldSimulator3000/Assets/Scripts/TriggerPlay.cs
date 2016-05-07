@@ -7,9 +7,13 @@ public class TriggerPlay : MonoBehaviour {
 
 	public AudioSource audio;
 
+    private bool hastriggered = false;
+
 	void OnTriggerEnter (Collider other)
 	{
-		StartCoroutine (FadeIn ());
+        if(!hastriggered)
+		    StartCoroutine (FadeIn ());
+        hastriggered = true;
 	}
 
 	IEnumerator FadeIn()
