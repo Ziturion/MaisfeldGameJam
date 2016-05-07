@@ -28,13 +28,14 @@ public class Take_Item : MonoBehaviour {
 
         if (Vector3.Distance(this.transform.position, Player.transform.position) < PickDistance)
         {
-            Destroy(this.gameObject);
+            
 
 			if (Item == Itemtype.Shotgun) {
                 Player.GetComponent<FirstPersonController>().SethasShotgun(true);
 			} else {
                 Player.GetComponent<FirstPersonController>().SethasKey(true);
             }
+            Destroy(this.gameObject);
         }
 
         //save object as taken
