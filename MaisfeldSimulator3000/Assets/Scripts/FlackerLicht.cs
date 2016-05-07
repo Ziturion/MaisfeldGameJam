@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class FlackerLicht : MonoBehaviour {
+    public float MinimumIntensity = 0, MaximumIntensity = 8, Frequence = 8;
     private Light licht;
     // Use this for initialization
     void Start () {
@@ -12,9 +13,9 @@ public class FlackerLicht : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Time.time % Random.Range(1, 3) == 0)
+        if (Time.time % Random.Range(1, Frequence) >= 0 && Time.time % Random.Range(1, Frequence) <= 1)
         {
-            licht.intensity = Random.Range(2, 7);
+            licht.intensity = Random.Range(MinimumIntensity, MaximumIntensity);
         }
 	
 	}
