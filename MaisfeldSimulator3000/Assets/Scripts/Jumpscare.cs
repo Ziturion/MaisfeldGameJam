@@ -29,6 +29,8 @@ public class Jumpscare : MonoBehaviour {
     IEnumerator Deactivate()
     {
         yield return new WaitForSeconds(DurationWhenNotKonsistent);
-        this.gameObject.SetActive(false);
+        this.GetComponent<MeshRenderer>().enabled = false;
+        this.GetComponents<BoxCollider>()[0].enabled = false;
+        this.GetComponents<BoxCollider>()[1].enabled = false;
     }
 }
