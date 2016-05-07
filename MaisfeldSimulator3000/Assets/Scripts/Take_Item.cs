@@ -16,8 +16,12 @@ public class Take_Item : MonoBehaviour {
 	}
 
 	public Itemtype Item;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+    void Start () {
 		Click.IsActive (false);
 	}
 	
