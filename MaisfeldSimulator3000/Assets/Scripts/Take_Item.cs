@@ -22,7 +22,7 @@ public class Take_Item : MonoBehaviour {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Start () {
-		Click.IsActive (false);
+		Click.enabled=false;
 	}
 	
 	// Update is called once per frame
@@ -43,7 +43,7 @@ public class Take_Item : MonoBehaviour {
                 Player.GetComponent<FirstPersonController>().SethasKey(true);
             }
             Destroy(this.gameObject);
-			Click.IsActive (false);
+			Click.enabled =false;
 
         }
 
@@ -55,12 +55,12 @@ public class Take_Item : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Click.IsActive (true);
+		Click.enabled =true;
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		Click.IsActive (false);
+		Click.enabled=false;
 	}
 
 }
