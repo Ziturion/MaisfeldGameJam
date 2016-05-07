@@ -9,7 +9,7 @@ public class Take_Item : MonoBehaviour {
 
 	public enum Itemtype
 	{
-		Key,Shotgun
+		Key,Shotgun,Lever
 	}
 
 	public Itemtype Item;
@@ -35,7 +35,6 @@ public class Take_Item : MonoBehaviour {
 			} else {
                 Player.GetComponent<FirstPersonController>().SethasKey(true);
             }
-
         }
 
         //save object as taken
