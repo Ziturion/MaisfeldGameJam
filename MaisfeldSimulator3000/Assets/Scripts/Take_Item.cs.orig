@@ -16,13 +16,19 @@ public class Take_Item : MonoBehaviour {
 	}
 
 	public Itemtype Item;
+<<<<<<< HEAD
+	// Use this for initialization
+	void Start () {
+		Click.IsActive (false);
+=======
     // Use this for initialization
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Start () {
-		Click.IsActive (false);
+	
+>>>>>>> 7cad5d8f82ff46612f9245a3d472bcf408513792
 	}
 	
 	// Update is called once per frame
