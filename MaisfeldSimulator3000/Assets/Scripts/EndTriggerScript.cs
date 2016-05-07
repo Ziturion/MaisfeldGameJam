@@ -22,6 +22,7 @@ public class EndTriggerScript : MonoBehaviour {
 
     void Awake()
     {
+        textfeld.fontSize = 30;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
