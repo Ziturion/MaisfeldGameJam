@@ -36,7 +36,7 @@ public class EndTriggerScript : MonoBehaviour {
 
         foreach (AudioSource audi in auditemp)
         {
-            audi.Stop();
+            StartCoroutine(FadeOut(audi));
         }
         
         
@@ -87,4 +87,16 @@ public class EndTriggerScript : MonoBehaviour {
         SceneManager.LoadScene(0);
 
         }
+
+    IEnumerator FadeOut(AudioSource audio)
+    {
+        while (audio.volume > 0)
+        {
+            audio.volume = audio.volume * 0.90f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+    }
+
+
 }
