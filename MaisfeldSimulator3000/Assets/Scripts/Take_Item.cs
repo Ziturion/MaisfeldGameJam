@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class Take_Item : MonoBehaviour {
 
     public GameObject Player;
     public int PickDistance = 5;
+
+	public Image Click;
 
 	public enum Itemtype
 	{
@@ -13,9 +16,14 @@ public class Take_Item : MonoBehaviour {
 	}
 
 	public Itemtype Item;
-	// Use this for initialization
-	void Start () {
-	
+    // Use this for initialization
+    void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+		Click = GameObject.FindGameObjectWithTag("Click").GetComponent<Image>();
+    }
+    void Start () {
+		Click.enabled=false;
 	}
 	
 	// Update is called once per frame
@@ -36,10 +44,24 @@ public class Take_Item : MonoBehaviour {
                 Player.GetComponent<FirstPersonController>().SethasKey(true);
             }
             Destroy(this.gameObject);
+			Click.enabled =false;
+
         }
 
         //save object as taken
 
+
+
     }
+
+	void OnTriggerEnter(Collider other)
+	{
+		Click.enabled =true;
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		Click.enabled=false;
+	}
 
 }

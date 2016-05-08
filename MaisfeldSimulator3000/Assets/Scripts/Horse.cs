@@ -7,6 +7,11 @@ public class Horse : MonoBehaviour {
     public GameObject Player;
     public int PickDistance = 5;
 
+    void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void OnMouseDown()
     {
 
