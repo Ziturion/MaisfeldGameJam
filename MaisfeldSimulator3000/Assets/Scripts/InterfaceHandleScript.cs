@@ -26,20 +26,22 @@ public class InterfaceHandleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        switch (MyUIType)
+        if (Player.GetComponent<FirstPersonController>() != null)
         {
-            case UIType.Shotgun:
-                this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasShotgun();
-                break;
-            case UIType.Key:
-                this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasKey();
-                break;
-            case UIType.Horse:
-                this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasHorse();
-                break;
+
+            switch (MyUIType)
+            {
+                case UIType.Shotgun:
+                    this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasShotgun();
+                    break;
+                case UIType.Key:
+                    this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasKey();
+                    break;
+                case UIType.Horse:
+                    this.GetComponent<Image>().enabled = Player.GetComponent<FirstPersonController>().GethasHorse();
+                    break;
+            }
         }
-        
 	
 	}
 }

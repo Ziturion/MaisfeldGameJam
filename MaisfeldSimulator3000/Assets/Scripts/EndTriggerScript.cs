@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EndTriggerScript : MonoBehaviour {
 
-    public GameObject Player;
+    public GameObject Player, Interface;
     public Canvas EndCanvas;
     public Text textfeld;
     public bool hasHorse, hasKey, hasShotgun;
@@ -24,6 +24,7 @@ public class EndTriggerScript : MonoBehaviour {
     {
         textfeld.fontSize = 30;
         Player = GameObject.FindGameObjectWithTag("Player");
+        Interface = GameObject.FindGameObjectWithTag("Interf");
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,6 +32,8 @@ public class EndTriggerScript : MonoBehaviour {
         hasHorse = Player.GetComponent<FirstPersonController>().GethasHorse();
         hasKey = Player.GetComponent<FirstPersonController>().GethasKey();
         hasShotgun = Player.GetComponent<FirstPersonController>().GethasShotgun();
+
+        Destroy(Interface.GetComponent<InterfaceHandleScript>());
 
         AudioSource[] auditemp = Player.GetComponents<AudioSource>();
 
