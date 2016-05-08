@@ -25,11 +25,6 @@ public class Take_Item : MonoBehaviour {
     void Start () {
 		Click.enabled=false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnMouseDown() {
 
