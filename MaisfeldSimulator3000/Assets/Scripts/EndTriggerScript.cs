@@ -32,6 +32,14 @@ public class EndTriggerScript : MonoBehaviour {
         hasKey = Player.GetComponent<FirstPersonController>().GethasKey();
         hasShotgun = Player.GetComponent<FirstPersonController>().GethasShotgun();
 
+        AudioSource[] auditemp = Player.GetComponents<AudioSource>();
+
+        foreach (AudioSource audi in auditemp)
+        {
+            StartCoroutine(FadeOut(audi));
+        }
+        
+        
         Destroy(Player.GetComponent<FirstPersonController>());
 
 		if (hasHorse && hasKey && hasShotgun) {
@@ -75,6 +83,20 @@ public class EndTriggerScript : MonoBehaviour {
             textfeld.text = textfeld.text + Texttowrite[i];
                 yield return new WaitForSeconds(0.05f);
             }
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
 
         }
+
+    IEnumerator FadeOut(AudioSource audio)
+    {
+        while (audio.volume > 0)
+        {
+            audio.volume = audio.volume * 0.90f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+    }
+
+
 }
