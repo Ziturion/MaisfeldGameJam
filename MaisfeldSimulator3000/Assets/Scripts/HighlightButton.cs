@@ -9,7 +9,7 @@ public class HighlightButton : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		start.Select ();
+		//start.Select ();
 
 	}
 	
